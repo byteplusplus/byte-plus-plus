@@ -2,7 +2,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom"
 
 import { AppLayout } from "./components/Layout/AppLayout"
 import { About } from "./pages/About"
-import { Cards } from "./pages/Cards"
+import { Cards } from "./pages/Cards/Cards.jsx"
 import { Contact } from "./pages/Contact"
 import Home from "./pages/Home"
 import { ErrorPage } from "./pages/ErrorPage"
