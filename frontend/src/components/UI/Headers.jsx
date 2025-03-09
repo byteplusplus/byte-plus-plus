@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom"
+import './Headers.css'
 
 export const Headers = () => {
   return (
     <header className="h-20 bg-gray-900">
       <div className="max-w-[90%] mx-auto flex items-center justify-between h-full">
         
-        <div className="relative w-16 h-16">
-          <div className="absolute w-full h-full border-2 border-white rounded-full"></div>
+        <div className="relative w-16 h-16 cursor-pointer">
             <NavLink to="/">
-            <img src={`${import.meta.env.BASE_URL}Logo.jpeg`} alt="Logo" className="w-full h-full rounded-full"/></NavLink>
+            <img src={`${import.meta.env.BASE_URL}Logo.jpeg`} alt="Logo" className="w-full h-full rounded-full byte_logo"/></NavLink>
+            <div className="star"><i class="fa-solid fa-star star-icon-manage"></i></div>
           </div>
 
           <nav>
