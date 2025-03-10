@@ -1,8 +1,8 @@
 .card{
     height: 300px;
     width: 250px;
-    background-color: red;
-    border: 3px solid white;
+    /* background-color: red; */
+    /* border: 3px solid white; */
 }
 .overlay {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 10%, rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0) 100%);

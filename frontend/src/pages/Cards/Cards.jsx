@@ -5,10 +5,98 @@ import HandShake from "../../assets/Handshake.png";
 import Progress from "../../assets/progress.png";
 
 import {useState} from "react";
+import {useGSAP} from "@gsap/react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Cards = () => {
 
+  const cardDetails = [
+    {
+      image: AIWomen,
+      heading: "Project",
+      description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque voluptas aliquid aperiam, ducimus cupiditate temporibus. Sed ex, consectetur ducimus ipsam incidunt ab consequuntur quasi vitae molestiae provident dignissimos."
+    },
+    {
+      image: CodingEvent,
+      heading: "Coding Hackathon",
+      description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque voluptas aliquid aperiam, ducimus cupiditate temporibus. Sed ex, consectetur ducimus ipsam incidunt ab consequuntur quasi vitae molestiae provident dignissimos."
+    },
+    {
+      image: HandShake,
+      heading: "Networking Event",
+      description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque voluptas aliquid aperiam, ducimus cupiditate temporibus. Sed ex, consectetur ducimus ipsam incidunt ab consequuntur quasi vitae molestiae provident dignissimos."
+    },
+    {
+      image: Progress,
+      heading: "Growth & Progress",
+      description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque voluptas aliquid aperiam, ducimus cupiditate temporibus. Sed ex, consectetur ducimus ipsam incidunt ab consequuntur quasi vitae molestiae provident dignissimos."
+    },
+  ];
+
   const [backImg,setBackImg] = useState(AIWomen);
+  const [cardHeaduing,setCardHeading] = useState("Project");
+  const [cardDescription,setCardDescription] = useState(cardDetails[0].description);
+
+  useEffect(() => {
+    gsap.fromTo(
+      "#card-heading, #card-paragraph,#card-button",
+      { y: "100%", opacity: 0 },
+      {
+        y: "0%",
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+      }
+    );
+  }, [cardHeaduing,cardDescription]);
+
+
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  
+    const cards = gsap.utils.toArray(".card");
+  
+    cards.forEach((card, i) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0.5, scale: 0.8 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          scrollTrigger: {
+            trigger: card,
+            scroller: ".cards-options",
+            start: "left 30%", // When the left(card ka left) of the card reaches center(viewpoint/card-option ka center)
+            end: "right centre", // When the right(card ka left) of the card reaches center(viewpoint/card-option ka center)
+            scrub: true, 
+            // markers: true,
+            horizontal: true,
+            onEnter:()=>{
+              if(i != 0) {
+                setBackImg(cardDetails[i].image)
+                setCardHeading(cardDetails[i].heading);
+                setCardDescription(cardDetails[i].description);
+              }
+            },
+            onEnterBack:()=>{
+              setBackImg(cardDetails[i].image)
+              setCardHeading(cardDetails[i].heading); 
+              setCardDescription(cardDetails[i].description);
+            }
+          },
+        }
+      );
+    });
+
+  });
+  
+  
 
   return (
     <div>
@@ -16,7 +104,7 @@ export const Cards = () => {
         backgroundImage : `url(${backImg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        transition: "background-image 1s ease-in-out"
+        transition: "background-image 0.5s ease-in-out"
       }}>
         <div className="overlay absolute bottom-0 left-0 w-full h-[100%] pointer-events-none"></div>
 
@@ -24,31 +112,50 @@ export const Cards = () => {
 
           <div className="card-content w-[100%] flex items-center gap-16">
             <div className="left-card w-[50%]">
-              <h1 className="text-5xl font-bold">Projects</h1>
-              <p className="text-lg my-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque voluptas aliquid aperiam, ducimus cupiditate temporibus. Sed ex, consectetur ducimus ipsam incidunt ab consequuntur quasi vitae molestiae provident dignissimos.</p>
-              <button className="bg-green-600">Explore Now</button>
+              <h1 id="card-heading" className="text-5xl font-bold" style={{}}>{cardHeaduing}</h1>
+              <p id="card-paragraph" className="text-lg my-5">{cardDescription}</p>
+              <button id="card-button" className="bg-green-600">Explore Now</button>
             </div>
             <div className="right-card w-[50%] overflow-hidden">
               <div className="cards-options flex gap-5 overflow-x-scroll scrollbar-hide">
-                <div onClick={()=>{setBackImg(AIWomen)}} className="card rounded-2xl flex-shrink-0" style={{
+                <div id="box1" onClick={()=>{
+                  setBackImg(AIWomen)
+                  setCardHeading(cardDetails[0].heading);
+                  setCardDescription(cardDetails[0].description);
+                }} className="card rounded-2xl flex-shrink-0 border-2 border-white" style={{
                   backgroundImage:`url(${AIWomen})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center"
                   }}></div>
-                <div onClick={()=>{setBackImg(CodingEvent)}} className="card rounded-2xl flex-shrink-0" style={{
+                <div id="box2" onClick={()=>{
+                  setBackImg(CodingEvent)
+                  setCardHeading(cardDetails[1].heading);
+                  setCardDescription(cardDetails[1].description);
+                }} className="card rounded-2xl flex-shrink-0 border-2 border-white" style={{
                   backgroundImage:`url(${CodingEvent})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center"
                   }}></div>
-                <div onClick={()=>{setBackImg(HandShake)}} className="card rounded-2xl flex-shrink-0" style={{
+                <div onClick={()=>{
+                  setBackImg(HandShake)
+                  setCardHeading(cardDetails[2].heading);
+                  setCardDescription(cardDetails[2].description);
+                }} className="card rounded-2xl flex-shrink-0 border-2 border-white" style={{
                   backgroundImage:`url(${HandShake})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center"
                 }}></div>
-                <div onClick={()=>{setBackImg(Progress)}} className="card rounded-2xl flex-shrink-0" style={{
+                <div onClick={()=>{
+                  setBackImg(Progress)
+                  setCardHeading(cardDetails[3].heading);
+                  setCardDescription(cardDetails[3].description);
+                }} className="card rounded-2xl flex-shrink-0 border-2 border-white" style={{
                   backgroundImage:`url(${Progress})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center"
+                }}></div>
+                <div className="card rounded-2xl flex-shrink-0" style={{
+                  opacity:0,
                 }}></div>
               </div>
             </div>
