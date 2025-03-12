@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element:<Contact />,
       },]
   }],
-  { basename: "/byte-plus-plus" } 
+  { basename: "/byte-plus-plus/" } 
 )
 
 function App() {
