@@ -6,6 +6,8 @@ import { Cards } from "./pages/Cards/Cards.jsx"
 import { Contact } from "./pages/Contact"
 import Home from "./pages/Home"
 import { ErrorPage } from "./pages/ErrorPage"
+import Feedback from "./pages/Feedback"; // Import Feedback Page
+
 
 const router = createBrowserRouter([
   {
@@ -28,7 +30,11 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element:<Contact />,
-      },]
+      },
+      { 
+        path: "/feedback", 
+        element: <Feedback /> }, 
+    ]
   }],
   { basename: "/byte-plus-plus" } 
 )
