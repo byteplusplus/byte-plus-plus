@@ -1,2 +1,2 @@
 # byte
-Officital Repository for Byte++
+Official Repository for Byte++

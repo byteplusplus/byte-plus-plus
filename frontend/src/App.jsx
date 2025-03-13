@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         element: <Feedback /> }, 
     ]
   }],
-  { basename: "/byte-plus-plus" } 
+  { basename: "/byte-plus-plus/" } 
 )
 
 function App() {
