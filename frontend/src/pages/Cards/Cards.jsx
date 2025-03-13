@@ -6,7 +6,6 @@ import Progress from "../../assets/progress.png";
 
 import { useState } from "react";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
