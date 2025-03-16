@@ -1,5 +1,8 @@
 import nebula from "../assets/Nebula.webp"
 import { Cards } from "./Cards/Cards.jsx"
+import Login from "./Login/Login.jsx"
+import SignUp from "./SignUp/SignUp.jsx"
+
 
 const Home = () => {
     
@@ -10,6 +13,7 @@ const Home = () => {
         <p className="text-lg mt-2">The coding society that shapes the future of tech enthusiasts!</p>
       </main>
       <Cards/>
+      
     </>
   )
 }
