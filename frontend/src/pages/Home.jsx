@@ -1,7 +1,5 @@
 import nebula from "../assets/Nebula.webp"
-import { Cards } from "./Cards/Cards.jsx"
-import Login from "./Login/Login.jsx"
-import SignUp from "./SignUp/SignUp.jsx"
+import { Cards } from "../components/Cards/Cards.jsx"
 
 
 const Home = () => {

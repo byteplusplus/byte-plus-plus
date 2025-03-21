@@ -1,12 +1,14 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 
 import { AppLayout } from "./components/Layout/AppLayout"
-import { About } from "./pages/About"
-import { Cards } from "./pages/Cards/Cards.jsx"
-import { Contact } from "./pages/Contact"
 import Home from "./pages/Home"
+import Login from "./components/Authentication/Login.jsx"
+import SignUp from "./components/Authentication/SignUp.jsx"
+import { Cards } from "./components/Cards/Cards.jsx"
+import { Contact } from "./pages/Contact"
+import Feedback from "./pages/Feedback";
+import { About } from "./pages/About"
 import { ErrorPage } from "./pages/ErrorPage"
-import Feedback from "./pages/Feedback"; // Import Feedback Page
 
 
 const router = createBrowserRouter([
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element:<Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/signup",
+        element: <SignUp />
       },
       {
         path: "/about",

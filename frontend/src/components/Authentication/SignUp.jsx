@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../SignUp/SignUp.css";
+import "./authentication.css";
 import SignupImage from "../../assets/SignupImage.png";
 import SignupBack from "../../assets/LogSignBack.png";
 

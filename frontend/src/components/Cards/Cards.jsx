@@ -1,4 +1,4 @@
-import "../Cards/Cards.css";
+import "./Cards.css";
 import AIWomen from "../../assets/AIwomen.png";
 import CodingEvent from "../../assets/CodingEvent.png";
 import HandShake from "../../assets/Handshake.png";
